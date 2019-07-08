@@ -1,0 +1,83 @@
+---
+- hosts: 10.10.10.183
+  gather_facts: no
+  vars:
+    ansible_network_os: icx
+    ansible_user: alethea
+    ansible_become: yes
+    ansible_password: alethea123
+    ansible_become_method: enable
+    ansible_become_pass: alethea123
+        
+  tasks:
+  # - name: set the ipv4 on remote devices with default port
+  #   icx_logging:
+  #       dest: host
+  #       name: 172.16.10.23
+  #       facility: local0
+        # state: present
+
+
+  - name: set the ipv6 on remote devices
+    icx_logging:
+        dest: host
+        name: 2001:db8::1
+        udp_port: 6000
+        facility: user
+        state: absent
+        compare: True
+
+  # - name: set the present on remote devices with specifies port
+  #   icx_logging:
+  #       dest: host
+  #       name: 172.16.10.23
+  #       udp_port: 2000
+  #       state: present
+
+  # - name: set the absent on remote devices specific port
+  #   icx_logging:
+  #       dest: host
+  #       name: 172.16.10.23
+  #       udp_port: 2000
+  #       state: absent
+
+  # - name: set the remove on remote devices default port
+  #   icx_logging:
+  #       dest: host
+  #       name: 172.16.10.23
+  #       state: absent
+
+  # - name: set the add errors on remote devices
+  #   icx_logging:
+  #       dest: buffered
+  #       level: 
+  #         - warnings
+  #         - errors
+  #         - critical
+  #       state: absent
+
+
+  # - name: set the remove errors on remote devices
+  #   icx_logging:
+  #       dest: buffered
+  #       level: errors
+  #       state: absent
+
+  # - name: set the aggregate on remote devices
+  #   icx_logging:
+  #     aggregate:
+  #       - { dest: buffered, level: ['notifications','informational'] }
+  #     state: present
+
+  # - name: remove the aggregate on remote devices
+  #   icx_logging:
+  #     aggregate:
+  #       - {dest: host}
+  #       - {dest: on}
+  #     state: present
+
+
+    register: output
+
+  - debug:
+      msg: '{{ output }}'

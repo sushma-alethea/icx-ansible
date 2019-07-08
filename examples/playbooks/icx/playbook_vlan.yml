@@ -1,0 +1,143 @@
+---
+- hosts: 10.10.10.182
+  gather_facts: yes
+  vars:
+    ansible_network_os: icx
+    ansible_become: True
+    ansible_user: alethea
+    ansible_password: alethea123
+    ansible_become_method: enable
+    ansible_become_pass: alethea123
+        
+        
+  tasks:
+  # - name: configure new vlan 
+  #   icx_vlan:
+  #    name: test-vlan
+  #    vlan_id: 6
+    #  tagged: 
+    #   name:
+    #     - ethernet 1/1/40 to 1/1/43
+    #     - ethernet 1/1/10
+    #     - lag 4
+    #  interfaces:
+    #   name:
+    #     - ethernet 1/1/2 to 1/1/4
+    #     - lag 5
+    #  compare: false
+    #  ip_dhcp_snooping: False
+    #  ip_arp_inspection: True
+
+  # - name: purge interface parameter
+  #   icx_vlan:
+  #    vlan_id: 7
+  #    interfaces:
+  #      name:
+  #        - ethernet 1/1/23
+  #      purge: true
+
+  # - name: modify the excisting vlan with purge
+  #   icx_vlan:
+  #    name: test-vlan
+  #    vlan_id: 3
+  #    tagged: 
+  #     name:
+  #       - ethernet 1/1/40 to 1/1/43
+  #       - ethernet 1/1/10
+  #       - lag 4
+  #     purge: True
+  #    interfaces:
+  #     name:
+  #       - ethernet 1/1/2 to 1/1/4
+  #       - lag 5 to 9
+  #     purge: True
+  #    ip_dhcp_snooping: False
+  #    ip_arp_inspection: True
+  #    state_tagged: absent
+
+  # - name: enable ip_dhcp snooping
+  #   icx_vlan:
+  #     vlan_id: 5
+  #     ip_dhcp_snooping: False
+  
+  
+  # - name: enable ip_arp_inspection
+  #   icx_vlan:
+  #     vlan_id: 5
+  #     ip_arp_inspection: False
+
+  # - name: enable STP
+  #   icx_vlan:
+  #     vlan_id: 5
+  #     interfaces: 
+  #       name: 
+  #        - ethernet 1/1/40
+  #     stp:
+  #       type: 802-1w
+  #       enabled: True
+  #       priority: 20
+  #     state: present
+
+  # - name: enable rstp
+  #   icx_vlan:
+  #     vlan_id: 5
+  #     stp:
+  #         type: rstp
+  #         enabled: True
+
+  
+  # - name: check intent parameter for ports
+  #   icx_vlan:
+  #     vlan_id: 3
+  #     associated_interfaces: 
+  #       - ethernet 1/1/1 to 1/1/2
+  #       - ethernet 1/1/3
+  #       - lag 11
+
+  # - name: check intent parameter for lag
+  #   icx_vlan:
+  #     vlan_id: 3
+  #     associated_tagged: 
+  #        - lag 1/1/11 to 1/1/12
+  
+  # - name: check aggregate
+  #   icx_vlan:
+  #    aggregate:
+  #    - {vlan_id: 6, name: vlan_6, tagged: { name: [ethernet 1/1/44]}, associated_tagged: ethernet 1/1/44 }
+  #    - {vlan_id: 7, name: vlan_7, interfaces: {name: [ethernet 1/1/43]}, ip_dhcp_snooping: true}
+  #    - {vlan_id: 8, name: vlan_8, tagged: {name: [ethernet 1/1/46 to 1/1/47]}, ip_arp_inspection: true}
+  #   #  stp:
+    #     type: 802-1w
+    #     priority: 5
+        
+
+  # - name: purge parameter
+  #   icx_vlan:
+  #   #  vlan_id: 3
+  #    aggregate:
+  #    - { vlan_id: 3}
+  #    - { vlan_id: 5}
+  #   #  - {vlan_id: 21}
+  #    purge: True
+
+  - name: purge interface parameter
+    icx_vlan:
+     vlan_id: 12 
+     name: test-vlan12
+     interfaces:
+      name:
+        # - ethernet 1/1/31 to 1/1/32
+        - lag 3
+      # purge: True
+     tagged:
+       name:
+         - ethernet 1/1/33 to 1/1/34
+      #  purge: True
+    #  associated_interfaces: 
+      # - ethernet 1/1/9
+      # - lag 13
+    register: result 
+  
+  - debug:
+     msg: '{{ result }}'
+        

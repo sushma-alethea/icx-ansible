@@ -1,0 +1,71 @@
+
+---
+- hosts: 10.10.10.182
+  gather_facts: yes
+  vars:
+    ansible_network_os: icx
+    ansible_become: True
+    ansible_user: alethea
+    ansible_password: alethea123
+    ansible_become_method: enable
+    ansible_become_pass: alethea123
+    
+        
+  tasks:
+  # - name: configure hostname
+  #   icx_system:
+  #     hostname: ruckus-icx
+
+  # - name: set dns servers and domain
+  #   icx_system:
+  #     name_servers: 
+  #      - 172.16.10.2
+  #      - 11.22.22.4
+  #      - 17.29.20.3
+  #     domain_search:
+  #      - ansible.com
+  #      - redhat.com
+  #      - test2.com
+
+  - name: setup radius server
+    icx_system:
+      domain_search:
+       - ansible.com
+       - redhat.com
+       - test1.com
+      aaa_servers:
+       - type: radius
+         hostname: 2001:db8::1
+         auth_port_type: auth-port
+         auth_port_num: 1821
+         acct_port_num: 1321
+         acct_type: accounting-only
+         auth_key: hh
+         auth_key_type:
+          - mac-auth
+          - dot1x
+          
+       - type: radius
+         hostname: 172.16.10.17
+         auth_port_type: auth-port
+         auth_port_num: 1821
+         acct_port_num: 1321
+         acct_type: accounting-only
+         auth_key: abc
+         auth_key_type:
+          - dot1x
+          - mac-auth
+
+       - type: tacacs
+         hostname: 172.16.10.18
+         auth_port_type: auth-port
+         auth_port_num: 3002
+         acct_type: authorization-only
+         auth_key: abc
+      state: absent
+      compare: false
+      
+    register: result
+
+  - debug:
+      msg: '{{ result }}'
