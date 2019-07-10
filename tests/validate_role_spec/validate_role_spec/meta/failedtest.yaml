@@ -1,3 +1,0 @@
----
-mutually_exclusive:
-  - ['int_arg', 'missing_arg']

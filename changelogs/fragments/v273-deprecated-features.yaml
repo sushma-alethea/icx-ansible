@@ -1,3 +1,0 @@
----
-deprecated_features:
-  - Deprecate lookup plugin network_template `network-engine#215 <https://github.com/ansible-network/network-engine/pull/215>`_.
