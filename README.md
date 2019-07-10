@@ -1,45 +1,38 @@
-# network-engine
+Role Name
+=========
 
-[![network-engine Ansible Galaxy Role](https://img.shields.io/ansible/role/25206.svg)](https://galaxy.ansible.com/ansible-network/network-engine/)
+A brief description of the role goes here.
 
-This role provides the foundation for building network roles by providing
-modules and plugins that are common to all Ansible Network roles.  Typically
-this role should not be directly invoked in a playbook.
+Requirements
+------------
 
-To install this role: `ansible-galaxy install ansible-network.network-engine`
+Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
-To see the version of this role you currently have installed: `ansible-galaxy info ansible-network.network-engine`
+Role Variables
+--------------
 
-To ensure you have the latest version available: `ansible-galaxy install -f ansible-network.network-engine`
+A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
-To find other roles maintained by the Ansible Network team, see our [Galaxy Profile](https://galaxy.ansible.com/ansible-network/). 
+Dependencies
+------------
 
-Any open bugs and/or feature requests are tracked in [GitHub issues](https://github.com/ansible-network/network-engine/issues).
+A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
-Interested in contributing to this role? Check out [CONTRIBUTING](https://github.com/ansible-network/network-engine/blob/devel/CONTRIBUTING.md) before submitting a pull request.
+Example Playbook
+----------------
 
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-## Functions
+    - hosts: servers
+      roles:
+         - { role: username.rolename, x: 42 }
 
-This section provides a list of the available functions that are included in
-this role.  Any of the provided functions can be implemented in Ansible
-playbooks directly.  To use a particular function, please see the `docs` link
-associated with the function.
+License
+-------
 
-* `cli` [[source]](https://github.com/ansible-network/network-engine/blob/devel/tasks/cli.yaml) [[docs]](https://github.com/ansible-network/network-engine/blob/devel/docs/tasks/cli.md).
+BSD
 
-## Developer Guide
+Author Information
+------------------
 
-- [How to use](https://github.com/ansible-network/network-engine/blob/devel/docs/user_guide/README.md)
-- [Parser Directives](https://github.com/ansible-network/network-engine/blob/devel/docs/directives/parser_directives.md)
-- [Filter Plugins](https://github.com/ansible-network/network-engine/blob/devel/docs/plugins/filter_plugins.md)
-- [How to test](https://github.com/ansible-network/network-engine/blob/devel/docs/tests/test_guide.md)
-
-
-## License
-
-GPLv3
-
-## Author Information
-
-Ansible Network Community (ansible-network)
+An optional section for the role authors to include contact information, or a website (HTML is not allowed).
