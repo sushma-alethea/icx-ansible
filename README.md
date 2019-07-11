@@ -1,7 +1,7 @@
 ICX Modules
 =========
 
-This is not a role, but ICX modules. Once can use these modules to automate managment of ICX Series 7000 switches.
+This is not a role, but ICX modules. One can use these modules to automate managment of ICX Series 7000 switches.
 
 Requirements
 ------------
